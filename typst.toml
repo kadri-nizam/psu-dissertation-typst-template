@@ -1,0 +1,15 @@
+[package]
+name = "psu-etd"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["Kadri M. Nizam"]
+license = "MIT"
+description = "A Penn State University dissertation and thesis template complying with Fox Graduate School formatting guidelines."
+repository = "https://github.com/kadri-nizam/psu-dissertation-typst-template"
+keywords = ["penn-state", "psu", "dissertation", "thesis", "etd"]
+compiler = "0.15.1"
+
+[template]
+path = "template"
+entrypoint = "main.typ"
+thumbnail = "thumbnail.png"
