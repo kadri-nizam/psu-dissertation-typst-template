@@ -182,11 +182,18 @@
   // Table of Contents
   pagebreak()
   {
-    show outline.entry.where(level: 1): set block(above: 0.75em)
-
     show outline.entry: it => link(
       it.element.location(),
-      if (it.prefix() != none) and (it.level == 1) {
+      it.indented(it.prefix(), it.inner())
+    )
+
+    show outline.entry.where(level: 1): it => {
+      set block(above: 0.5em)
+      set text(weight: "bold")
+
+      let t = if it.prefix() == none{
+        it
+      } else {
         v(0.75cm)
         show linebreak: none
 
@@ -195,17 +202,10 @@
         } else {
           "Chapter"
         }
-
-        text(
-          weight: "bold",
-          smallcaps(
-            if it.element.has("label") {[#prefix #it.prefix() --- #it.inner()]}
-          )
-        )
-      } else {
-        it.indented(it.prefix(), it.inner())
+        [#prefix #it.prefix().text.replace(".", "") --- #it.inner()]
       }
-    )
+      smallcaps[#t]
+    }
 
     outline(
       title: [
@@ -268,7 +268,7 @@
   counter(page).update(1)
   set page(numbering: "1", number-align: top + right)
 
-  set heading(numbering: "1.")
+  set heading(numbering: "1.1")
   show heading: it => {
     if it.level == 2 {
       set text(size: 18pt)
@@ -295,7 +295,7 @@
     ]
   }
 
-  // Vita (Required for PhD, optional for Master's)
+  // Vita (Required for PhD, optional for Master's) - Page numbering suppressed
   if vita_content != none {
     pagebreak()
     set page(numbering: none)

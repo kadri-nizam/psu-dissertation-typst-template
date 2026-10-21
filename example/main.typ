@@ -1,4 +1,5 @@
 #import "@preview/psu-etd:0.1.0": psu-document, appendices
+// #import "../lib.typ": psu-document, appendices
 
 #show: psu-document.with(
   title: "Interesting Dissertation Topic",
@@ -21,7 +22,7 @@
   // If you don't need a symbols page, just do: list_of_symbols: none
   list_of_symbols: [ #include "front-matter/symbols.typ" ],
   dedication: [ _To those who look up._ ],
-  bibliography_file: "../template/references.bib",
+  bibliography_file: "../example/references.bib",
   vita_content: [
     #include "vita.typ"
   ],
